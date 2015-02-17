@@ -7,7 +7,6 @@ define('PKG_NAME_LOWER', strtolower(PKG_NAME));
 define('PKG_VERSION', '1.0.0');
 define('PKG_RELEASE', 'beta');
 define('PKG_AUTO_INSTALL', true);
-define('PKG_NAMESPACE_PATH', '{core_path}components/' . PKG_NAME_LOWER . '/');
 
 /* define paths */
 if (isset($_SERVER['MODX_BASE_PATH'])) {
@@ -44,9 +43,23 @@ define('BUILD_PLUGIN_UPDATE', true);
 //define('BUILD_POLICY_TEMPLATE_UPDATE', true);
 //define('BUILD_PERMISSION_UPDATE', true);
 
-define('BUILD_CHUNK_STATIC', false);
-define('BUILD_SNIPPET_STATIC', false);
-define('BUILD_PLUGIN_STATIC', false);
+if (!empty($_GET['development'])) {
+	define('PKG_NAMESPACE_PATH', '{base_path}' . PKG_NAME . '/core/components/' . PKG_NAME_LOWER . '/');
+	define('PKG_CORE_PATH', MODX_BASE_PATH . PKG_NAME . '/core/components/' . PKG_NAME_LOWER . '/');
+	define('PKG_STATIC_PATH', PKG_NAME . '/core/components/' . PKG_NAME_LOWER);
+	define('PKG_ASSETS_URL', '/ms2form/assets/components/' . PKG_NAME_LOWER . '/');
+	define('BUILD_CHUNK_STATIC', true);
+	define('BUILD_SNIPPET_STATIC', true);
+	define('BUILD_PLUGIN_STATIC', false);
+} else {
+	define('PKG_NAMESPACE_PATH', '{core_path}components/' . PKG_NAME_LOWER . '/');
+	define('PKG_CORE_PATH', MODX_BASE_PATH . 'core/components/' . PKG_NAME_LOWER . '/');
+	define('PKG_STATIC_PATH', 'core/components/' . PKG_NAME_LOWER);
+	define('PKG_ASSETS_URL', '{assets_url}components/' . PKG_NAME_LOWER . '/');
+	define('BUILD_CHUNK_STATIC', false);
+	define('BUILD_SNIPPET_STATIC', false);
+	define('BUILD_PLUGIN_STATIC', false);
+}
 
 $BUILD_RESOLVERS = array(
 	'tables',

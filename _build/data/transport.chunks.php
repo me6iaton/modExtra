@@ -22,7 +22,7 @@ foreach ($tmp as $k => $v) {
 		'snippet' => file_get_contents($sources['source_core'] . '/elements/chunks/chunk.' . $v['file'] . '.tpl'),
 		'static' => BUILD_CHUNK_STATIC,
 		'source' => 1,
-		'static_file' => 'core/components/' . PKG_NAME_LOWER . '/elements/chunks/chunk.' . $v['file'] . '.tpl',
+		'static_file' => PKG_STATIC_PATH . '/elements/chunks/chunk.' . $v['file'] . '.tpl',
 	), '', true, true);
 
 	$chunks[] = $chunk;

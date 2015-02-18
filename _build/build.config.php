@@ -50,7 +50,7 @@ if (!empty($_GET['development'])) {
 	define('PKG_ASSETS_URL', '/ms2form/assets/components/' . PKG_NAME_LOWER . '/');
 	define('BUILD_CHUNK_STATIC', true);
 	define('BUILD_SNIPPET_STATIC', true);
-	define('BUILD_PLUGIN_STATIC', false);
+	define('BUILD_PLUGIN_STATIC', true);
 } else {
 	define('PKG_NAMESPACE_PATH', '{core_path}components/' . PKG_NAME_LOWER . '/');
 	define('PKG_CORE_PATH', MODX_BASE_PATH . 'core/components/' . PKG_NAME_LOWER . '/');
